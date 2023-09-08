@@ -23,6 +23,11 @@
 		607C96082AABD6B0006AFFD4 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96072AABD6B0006AFFD4 /* PostCell.swift */; };
 		607C960A2AABD710006AFFD4 /* PostsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96092AABD710006AFFD4 /* PostsTableViewDataSource.swift */; };
 		607C960C2AABD73A006AFFD4 /* PostsTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C960B2AABD73A006AFFD4 /* PostsTableViewDataSourceTests.swift */; };
+		607C960E2AABD981006AFFD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C960D2AABD981006AFFD4 /* LoginViewController.swift */; };
+		607C96102AABDB65006AFFD4 /* UserIdStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C960F2AABDB65006AFFD4 /* UserIdStorage.swift */; };
+		607C96122AABDC28006AFFD4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96112AABDC28006AFFD4 /* LoginViewModel.swift */; };
+		607C96142AABDEFF006AFFD4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */; };
+		607C96162AABDFF9006AFFD4 /* UserIdStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +77,11 @@
 		607C96072AABD6B0006AFFD4 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		607C96092AABD710006AFFD4 /* PostsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewDataSource.swift; sourceTree = "<group>"; };
 		607C960B2AABD73A006AFFD4 /* PostsTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewDataSourceTests.swift; sourceTree = "<group>"; };
+		607C960D2AABD981006AFFD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		607C960F2AABDB65006AFFD4 /* UserIdStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdStorage.swift; sourceTree = "<group>"; };
+		607C96112AABDC28006AFFD4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +142,7 @@
 		607C95BA2AABBA90006AFFD4 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				607C96172AABE0D9006AFFD4 /* LoginView */,
 				607C95EE2AABBAF0006AFFD4 /* ShowPosts */,
 				607C95BB2AABBA90006AFFD4 /* AppDelegate.swift */,
 				607C95BD2AABBA90006AFFD4 /* SceneDelegate.swift */,
@@ -150,6 +161,8 @@
 			children = (
 				607C96022AABC2B1006AFFD4 /* ShowPostsViewModelTests.swift */,
 				607C960B2AABD73A006AFFD4 /* PostsTableViewDataSourceTests.swift */,
+				607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */,
+				607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */,
 			);
 			path = dbTests;
 			sourceTree = "<group>";
@@ -180,6 +193,16 @@
 				607C95FE2AABBC4A006AFFD4 /* PostRequesterTests.swift */,
 			);
 			path = dbIntegrationTests;
+			sourceTree = "<group>";
+		};
+		607C96172AABE0D9006AFFD4 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				607C960D2AABD981006AFFD4 /* LoginViewController.swift */,
+				607C960F2AABDB65006AFFD4 /* UserIdStorage.swift */,
+				607C96112AABDC28006AFFD4 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,13 +367,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				607C95C02AABBA90006AFFD4 /* ViewController.swift in Sources */,
+				607C96102AABDB65006AFFD4 /* UserIdStorage.swift in Sources */,
 				607C95C62AABBA90006AFFD4 /* db.xcdatamodeld in Sources */,
 				607C95BC2AABBA90006AFFD4 /* AppDelegate.swift in Sources */,
 				607C95BE2AABBA90006AFFD4 /* SceneDelegate.swift in Sources */,
 				607C95F02AABBB32006AFFD4 /* PostRequester.swift in Sources */,
 				607C96012AABC296006AFFD4 /* ShowPostsViewModel.swift in Sources */,
 				607C96062AABD13F006AFFD4 /* ShowPostsViewModel+Init.swift in Sources */,
+				607C96122AABDC28006AFFD4 /* LoginViewModel.swift in Sources */,
 				607C96082AABD6B0006AFFD4 /* PostCell.swift in Sources */,
+				607C960E2AABD981006AFFD4 /* LoginViewController.swift in Sources */,
 				607C960A2AABD710006AFFD4 /* PostsTableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,8 +385,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607C96142AABDEFF006AFFD4 /* LoginViewModelTests.swift in Sources */,
 				607C960C2AABD73A006AFFD4 /* PostsTableViewDataSourceTests.swift in Sources */,
 				607C96032AABC2B1006AFFD4 /* ShowPostsViewModelTests.swift in Sources */,
+				607C96162AABDFF9006AFFD4 /* UserIdStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
