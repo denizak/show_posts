@@ -1,0 +1,45 @@
+{
+  "configurations" : [
+    {
+      "id" : "6452DB1D-C5AA-4B13-9789-3B3B96ED2D7E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:db.xcodeproj",
+      "identifier" : "607C95B72AABBA90006AFFD4",
+      "name" : "db"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:db.xcodeproj",
+        "identifier" : "607C95D02AABBA91006AFFD4",
+        "name" : "dbTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:db.xcodeproj",
+        "identifier" : "607C95DA2AABBA91006AFFD4",
+        "name" : "dbUITests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:db.xcodeproj",
+        "identifier" : "607C95F42AABBC1F006AFFD4",
+        "name" : "dbIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
