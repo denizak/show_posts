@@ -8,13 +8,7 @@
 import Foundation
 import Combine
 
-struct PostItem {
-    let id: Int
-    let title: String
-    let body: String
-}
-
-struct ShowPostsViewModel {
+final class ShowPostsViewModel {
     typealias UserId = Int
 
     private let itemsSubject = PassthroughSubject<[PostItem], Never>()

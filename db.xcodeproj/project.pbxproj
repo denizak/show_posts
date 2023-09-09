@@ -28,6 +28,9 @@
 		607C96122AABDC28006AFFD4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96112AABDC28006AFFD4 /* LoginViewModel.swift */; };
 		607C96142AABDEFF006AFFD4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */; };
 		607C96162AABDFF9006AFFD4 /* UserIdStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */; };
+		607C96192AABEBB1006AFFD4 /* FavoritePostPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */; };
+		60E13A642AAC701F004A96CA /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A632AAC701F004A96CA /* PostItem.swift */; };
+		60E13A662AAC707A004A96CA /* FavoritePostPersistentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		607C96112AABDC28006AFFD4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdStorageTests.swift; sourceTree = "<group>"; };
+		607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistent.swift; sourceTree = "<group>"; };
+		60E13A632AAC701F004A96CA /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistentTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,8 @@
 				607C96052AABD13F006AFFD4 /* ShowPostsViewModel+Init.swift */,
 				607C96072AABD6B0006AFFD4 /* PostCell.swift */,
 				607C96092AABD710006AFFD4 /* PostsTableViewDataSource.swift */,
+				607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */,
+				60E13A632AAC701F004A96CA /* PostItem.swift */,
 			);
 			path = ShowPosts;
 			sourceTree = "<group>";
@@ -191,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				607C95FE2AABBC4A006AFFD4 /* PostRequesterTests.swift */,
+				60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */,
 			);
 			path = dbIntegrationTests;
 			sourceTree = "<group>";
@@ -366,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E13A642AAC701F004A96CA /* PostItem.swift in Sources */,
 				607C95C02AABBA90006AFFD4 /* ViewController.swift in Sources */,
 				607C96102AABDB65006AFFD4 /* UserIdStorage.swift in Sources */,
 				607C95C62AABBA90006AFFD4 /* db.xcdatamodeld in Sources */,
@@ -376,6 +386,7 @@
 				607C96062AABD13F006AFFD4 /* ShowPostsViewModel+Init.swift in Sources */,
 				607C96122AABDC28006AFFD4 /* LoginViewModel.swift in Sources */,
 				607C96082AABD6B0006AFFD4 /* PostCell.swift in Sources */,
+				607C96192AABEBB1006AFFD4 /* FavoritePostPersistent.swift in Sources */,
 				607C960E2AABD981006AFFD4 /* LoginViewController.swift in Sources */,
 				607C960A2AABD710006AFFD4 /* PostsTableViewDataSource.swift in Sources */,
 			);
@@ -404,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E13A662AAC707A004A96CA /* FavoritePostPersistentTests.swift in Sources */,
 				607C95FF2AABBC4A006AFFD4 /* PostRequesterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

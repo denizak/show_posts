@@ -16,11 +16,14 @@ final class ShowPostsViewModelTests: XCTestCase {
         var actualUserId = -1
         var actualPostItems: [PostItem] = []
 
-        let sut = ShowPostsViewModel(getPosts: { userId in
-            defer { expectLoad.fulfill() }
-            actualUserId = userId
-            return [PostItem(id: 1, title: "any-title", body: "any-body")]
-        }, getUserId: { 100 })
+        let sut = ShowPostsViewModel(
+            getPosts: { userId in
+                defer { expectLoad.fulfill() }
+                actualUserId = userId
+                return [PostItem(id: 1, title: "any-title", body: "any-body", isFavorite: false)]
+            },
+            getUserId: { 100 },
+            toggleFavorite: { _ in })
         let cancellable = sut.items.sink(receiveValue: { value in actualPostItems = value })
         defer { cancellable.cancel() }
 
@@ -40,10 +43,13 @@ final class ShowPostsViewModelTests: XCTestCase {
 
         var showLoginViewCalled = false
         var actualUserId = -1
-        let sut = ShowPostsViewModel(getPosts: { userId in
-            actualUserId = userId
-            return []
-        }, getUserId: { nil })
+        let sut = ShowPostsViewModel(
+            getPosts: { userId in
+                actualUserId = userId
+                return []
+            },
+            getUserId: { nil },
+            toggleFavorite: { _ in })
         let cancellable = sut.showLoginView.sink(receiveValue: { _ in
             showLoginViewCalled = true
             expectLoad.fulfill()
@@ -61,9 +67,12 @@ final class ShowPostsViewModelTests: XCTestCase {
         let expectLoad = expectation(description: #function)
 
         var showErrorViewCalled = false
-        let sut = ShowPostsViewModel(getPosts: { userId in
-            throw ViewModelError.testError
-        }, getUserId: { 1 })
+        let sut = ShowPostsViewModel(
+            getPosts: { userId in
+                throw ViewModelError.testError
+            },
+            getUserId: { 1 },
+            toggleFavorite: { _ in })
         let cancellable = sut.showErrorView.sink(receiveValue: { _ in
             showErrorViewCalled = true
             expectLoad.fulfill()
