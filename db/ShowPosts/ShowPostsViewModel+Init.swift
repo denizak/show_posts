@@ -16,6 +16,9 @@ extension ShowPostsViewModel {
             getPosts: { userId in
                 try await getPostItem.getPosts()
             },
+            getFavoritePosts: { userId in
+                favoritePostPersistent.getAll(userId: userId)
+            },
             getUserId: { userStorage.get() },
             toggleFavorite: { item in
                 try favoritePostPersistent.togglePostItem(item: item)

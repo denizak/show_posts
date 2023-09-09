@@ -9,14 +9,14 @@ import Foundation
 
 struct GetPostItem {
     let requestPostItem: (Int) async throws -> [PostItem]
-    let getFavoritePostItem: () -> [PostItem]
+    let getFavoritePostItem: (Int) -> [PostItem]
     let getUserId: () -> Int?
 
     func getPosts() async throws -> [PostItem] {
         guard let userId = getUserId() else { return [] }
 
         let remoteItems = try await requestPostItem(userId)
-        let favoriteItems = getFavoritePostItem()
+        let favoriteItems = getFavoritePostItem(userId)
         let favoriteIds: Set<Int> = Set(favoriteItems.map { $0.id })
         var postItems: [PostItem] = []
 
@@ -24,6 +24,7 @@ struct GetPostItem {
             if favoriteIds.contains(remoteItems[index].id) {
                 let item = PostItem(
                     id: remoteItems[index].id,
+                    userId: userId,
                     title: remoteItems[index].title,
                     body: remoteItems[index].body,
                     isFavorite: true)

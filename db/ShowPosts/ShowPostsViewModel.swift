@@ -8,6 +8,11 @@
 import Foundation
 import Combine
 
+enum Filter {
+    case all
+    case favorite
+}
+
 final class ShowPostsViewModel {
     typealias UserId = Int
 
@@ -27,20 +32,29 @@ final class ShowPostsViewModel {
     }
 
     private var task: Task<Void, Error>?
+    private var currentFilter = Filter.all
 
     private let getPosts: (UserId) async throws -> [PostItem]
+    private let getFavoritePosts: (UserId) -> [PostItem]
     private let getUserId: () -> Int?
     private let toggleFavoriteItem: (PostItem) throws -> Void
     init(getPosts: @escaping (UserId) async throws -> [PostItem],
+         getFavoritePosts: @escaping (UserId) -> [PostItem],
          getUserId: @escaping () -> Int?,
          toggleFavorite: @escaping (PostItem) throws -> Void
     ) {
         self.getPosts = getPosts
+        self.getFavoritePosts = getFavoritePosts
         self.getUserId = getUserId
         self.toggleFavoriteItem = toggleFavorite
     }
 
     func viewAppear() {
+        load()
+    }
+
+    func toggleFilter(filter: Filter) {
+        currentFilter = filter
         load()
     }
 
@@ -50,10 +64,28 @@ final class ShowPostsViewModel {
         } catch {
             print("unable to toggle favorite item")
         }
-        load()
+        loadAll()
     }
 
     private func load() {
+        switch currentFilter {
+        case .all:
+            loadAll()
+        case .favorite:
+            loadFavorite()
+        }
+    }
+
+    private func loadFavorite() {
+        guard let userId = getUserId() else {
+            showLoginViewSubject.send(())
+            return
+        }
+        let posts = getFavoritePosts(userId)
+        itemsSubject.send(posts)
+    }
+
+    private func loadAll() {
         task?.cancel()
         task = Task {
             guard let userId = getUserId() else {

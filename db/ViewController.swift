@@ -8,11 +8,17 @@
 import UIKit
 import Combine
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     private let table: UITableView = {
         let table = UITableView(frame: .zero)
         return table
+    }()
+
+    private let unitSelector: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["All", "Favorite"])
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
     }()
 
     private let dataSource = PostsTableViewDataSource()
@@ -22,7 +28,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
-        
+        setUpView()
+
+        dataSource.onFavoriteTap = { [unowned self] selectedItem in
+            self.viewModel.toggleFavorite(item: selectedItem)
+        }
+    }
+
+    private func setUpView() {
         view.addSubview(table)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -34,9 +47,9 @@ class ViewController: UIViewController {
         table.dataSource = dataSource
         table.delegate = dataSource
 
-        dataSource.onFavoriteTap = { [unowned self] selectedItem in
-            self.viewModel.toggleFavorite(item: selectedItem)
-        }
+        table.tableHeaderView = unitSelector
+
+        unitSelector.addTarget(self, action: #selector(unitValueChanged), for: .valueChanged)
     }
 
     private func bindView() {
@@ -68,8 +81,19 @@ class ViewController: UIViewController {
         present(loginView, animated: false)
     }
 
+    @objc
+    private func unitValueChanged(_ sender: UISegmentedControl) {
+        viewModel.toggleFilter(filter: sender.selectedFilter)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.viewAppear()
+    }
+}
+
+extension UISegmentedControl {
+    var selectedFilter: Filter {
+        self.selectedSegmentIndex == 1 ? .favorite : .all
     }
 }

@@ -20,8 +20,9 @@ final class ShowPostsViewModelTests: XCTestCase {
             getPosts: { userId in
                 defer { expectLoad.fulfill() }
                 actualUserId = userId
-                return [PostItem(id: 1, title: "any-title", body: "any-body", isFavorite: false)]
+                return [PostItem(id: 1, userId: userId, title: "any-title", body: "any-body", isFavorite: false)]
             },
+            getFavoritePosts: { _ in [] },
             getUserId: { 100 },
             toggleFavorite: { _ in })
         let cancellable = sut.items.sink(receiveValue: { value in actualPostItems = value })
@@ -48,6 +49,7 @@ final class ShowPostsViewModelTests: XCTestCase {
                 actualUserId = userId
                 return []
             },
+            getFavoritePosts: { _ in [] },
             getUserId: { nil },
             toggleFavorite: { _ in })
         let cancellable = sut.showLoginView.sink(receiveValue: { _ in
@@ -71,6 +73,7 @@ final class ShowPostsViewModelTests: XCTestCase {
             getPosts: { userId in
                 throw ViewModelError.testError
             },
+            getFavoritePosts: { _ in [] },
             getUserId: { 1 },
             toggleFavorite: { _ in })
         let cancellable = sut.showErrorView.sink(receiveValue: { _ in
@@ -83,6 +86,60 @@ final class ShowPostsViewModelTests: XCTestCase {
         wait(for: [expectLoad], timeout: 1)
 
         XCTAssertTrue(showErrorViewCalled)
+    }
+
+    func testToggleFavorite() {
+        let expectLoad = expectation(description: #function)
+        var actualToggleFavoriteItem: PostItem?
+        var actualPostItems: [PostItem] = []
+        let sut = ShowPostsViewModel(
+            getPosts: { userId in
+                [PostItem(id: 1, userId: userId, title: "any-title", body: "any-body", isFavorite: true)]
+            },
+            getFavoritePosts: { _ in [] },
+            getUserId: { 100 },
+            toggleFavorite: { item in actualToggleFavoriteItem = item })
+        let cancellable = sut.items.sink(receiveValue: { value in
+            actualPostItems = value
+            expectLoad.fulfill()
+        })
+        defer { cancellable.cancel() }
+
+        sut.toggleFavorite(item: PostItem(id: 100, userId: 100, title: "any-title", body: "any-body", isFavorite: false))
+        wait(for: [expectLoad], timeout: 1)
+
+        XCTAssertNotNil(actualToggleFavoriteItem)
+        XCTAssertFalse(actualPostItems.isEmpty)
+    }
+
+    func testToggleFilter() {
+        var actualPostItems: [PostItem] = []
+        let sut = ShowPostsViewModel(
+            getPosts: { _ in [] },
+            getFavoritePosts: { userId in [PostItem(id: 1, userId: userId, title: "any-title", body: "any-body", isFavorite: true)] },
+            getUserId: { 100 },
+            toggleFavorite: { _ in })
+        let cancellable = sut.items.sink(receiveValue: { value in actualPostItems = value })
+        defer { cancellable.cancel() }
+
+        sut.toggleFilter(filter: .favorite)
+
+        XCTAssertFalse(actualPostItems.isEmpty)
+    }
+
+    func testToggleFilter_whenUserIdNil() {
+        var showLoginViewCalled = false
+        let sut = ShowPostsViewModel(
+            getPosts: { _ in [] },
+            getFavoritePosts: { userId in [PostItem(id: 1, userId: userId, title: "any-title", body: "any-body", isFavorite: true)] },
+            getUserId: { nil },
+            toggleFavorite: { _ in })
+        let cancellable = sut.showLoginView.sink(receiveValue: { showLoginViewCalled = true })
+        defer { cancellable.cancel() }
+
+        sut.toggleFilter(filter: .favorite)
+
+        XCTAssertTrue(showLoginViewCalled)
     }
 }
 

@@ -14,10 +14,10 @@ extension GetPostItem {
         let userStorage = UserIdStorage.shared
         return GetPostItem(
             requestPostItem: { userId in
-                try await requester.request(userId: userId).map({ $0.toPostItem() })
+                try await requester.request(userId: userId).map({ $0.toPostItem(userId: userId) })
             },
-            getFavoritePostItem: {
-                favoritePostPersistent.getAll()
+            getFavoritePostItem: { userId in
+                favoritePostPersistent.getAll(userId: userId)
             },
             getUserId: {
                 userStorage.get()
@@ -26,7 +26,7 @@ extension GetPostItem {
 }
 
 extension PostItemResponse {
-    func toPostItem() -> PostItem {
-        .init(id: id, title: title, body: body, isFavorite: false)
+    func toPostItem(userId: Int) -> PostItem {
+        .init(id: id, userId: userId, title: title, body: body, isFavorite: false)
     }
 }

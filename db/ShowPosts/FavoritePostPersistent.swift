@@ -14,11 +14,11 @@ final class FavoritePostPersistent {
     func togglePostItem(item: PostItem) throws {
         let context = FavoritePostPersistent.context
         if item.isFavorite {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritePost")
-            request.predicate = NSPredicate(format: "id = %d", item.id)
+            let request = FavoritePost.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %d AND userId = %d", item.id, item.userId)
             do {
                 let results = try context.fetch(request)
-                if let favoriteItem = results.first as? FavoritePost {
+                if let favoriteItem = results.first {
                     context.delete(favoriteItem)
                 }
             } catch {
@@ -27,6 +27,7 @@ final class FavoritePostPersistent {
         } else {
             let favoriteItem = FavoritePost(context: context)
             favoriteItem.id = Int32(item.id)
+            favoriteItem.userId = Int32(item.userId)
             favoriteItem.title = item.title
             favoriteItem.body = item.body
         }
@@ -34,12 +35,13 @@ final class FavoritePostPersistent {
         saveContext()
     }
 
-    func getAll() -> [PostItem] {
+    func getAll(userId: Int) -> [PostItem] {
         let context = FavoritePostPersistent.context
         let request: NSFetchRequest<FavoritePost> = FavoritePost.fetchRequest()
+        request.predicate = NSPredicate(format: "userId = %d", userId)
         do {
             let results = try context.fetch(request)
-            return results.map { PostItem(id: Int($0.id), title: $0.title ?? "", body: $0.body ?? "", isFavorite: true) }
+            return results.map { PostItem(id: Int($0.id), userId: Int($0.userId), title: $0.title ?? "", body: $0.body ?? "", isFavorite: true) }
         } catch {
             print("Could not load data")
             return []
@@ -91,8 +93,6 @@ final class FavoritePostPersistent {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

@@ -9,6 +9,7 @@ import Foundation
 
 struct PostItem {
     let id: Int
+    let userId: Int
     let title: String
     let body: String
     let isFavorite: Bool

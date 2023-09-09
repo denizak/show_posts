@@ -15,9 +15,9 @@ final class GetPostItemTests: XCTestCase {
         let sut = GetPostItem(
             requestPostItem: { userId in
                 actualUserIdValue = userId
-                return [.init(id: 200, title: "any-title", body: "any-body", isFavorite: false)]
+                return [.init(id: 200, userId: 111, title: "any-title", body: "any-body", isFavorite: false)]
             },
-            getFavoritePostItem: { [.init(id: 200, title: "any-title", body: "any-body", isFavorite: true)] },
+            getFavoritePostItem: { userId in [.init(id: 200, userId: userId, title: "any-title", body: "any-body", isFavorite: true)] },
             getUserId: { 1000 })
 
         let postItems = try await sut.getPosts()
@@ -34,9 +34,9 @@ final class GetPostItemTests: XCTestCase {
         let sut = GetPostItem(
             requestPostItem: { userId in
                 actualUserIdValue = userId
-                return [.init(id: 200, title: "any-title", body: "any-body", isFavorite: false)]
+                return [.init(id: 200, userId: 111, title: "any-title", body: "any-body", isFavorite: false)]
             },
-            getFavoritePostItem: { [] },
+            getFavoritePostItem: { _ in [] },
             getUserId: { 1000 })
 
         let postItems = try await sut.getPosts()
@@ -53,9 +53,9 @@ final class GetPostItemTests: XCTestCase {
         let sut = GetPostItem(
             requestPostItem: { userId in
                 actualUserIdValue = userId
-                return [.init(id: 200, title: "any-title", body: "any-body", isFavorite: false)]
+                return [.init(id: 200, userId: 111, title: "any-title", body: "any-body", isFavorite: false)]
             },
-            getFavoritePostItem: { [] },
+            getFavoritePostItem: { _ in [] },
             getUserId: { nil })
 
         let postItems = try await sut.getPosts()

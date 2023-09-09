@@ -12,7 +12,7 @@ final class PostsTableViewDataSourceTests: XCTestCase {
 
     func testNumberOfRows() {
         let sut = PostsTableViewDataSource()
-        sut.items = [.init(id: 1, title: "", body: "", isFavorite: false)]
+        sut.items = [.init(id: 1, userId: 111, title: "", body: "", isFavorite: false)]
 
         let rows = sut.tableView(UITableView(frame: .zero), numberOfRowsInSection: 0)
 
@@ -23,7 +23,7 @@ final class PostsTableViewDataSourceTests: XCTestCase {
         let tableView = UITableView(frame: .zero)
         tableView.register(PostCell.self, forCellReuseIdentifier: PostCell.identifier)
         let sut = PostsTableViewDataSource()
-        sut.items = [.init(id: 1, title: "any-title", body: "any-body", isFavorite: false)]
+        sut.items = [.init(id: 1, userId: 111, title: "any-title", body: "any-body", isFavorite: false)]
 
         let cell = sut.tableView(tableView, cellForRowAt: .init(row: 0, section: 0)) as? PostCell
 
