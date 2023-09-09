@@ -45,9 +45,24 @@ final class PostCell: UITableViewCell {
         return stack
     }()
 
-    func update(item: PostItem) {
+    private var postItem: PostItem!
+    private var onFavoriteTap: (PostItem) -> Void = { _ in }
+
+    func update(item: PostItem, onFavoriteTap: @escaping (PostItem) -> Void) {
         titleLabel.text = item.title
         bodyLabel.text = item.body
+
+        let imageName = item.isFavorite ? "star.fill" : "star"
+        favoriteButton.setImage(.init(systemName: imageName), for: .normal)
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTap), for: .touchUpInside)
+
+        self.onFavoriteTap = onFavoriteTap
+        self.postItem = item
+    }
+
+    @objc
+    private func favoriteButtonTap() {
+        self.onFavoriteTap(postItem)
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

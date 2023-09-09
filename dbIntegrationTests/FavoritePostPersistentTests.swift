@@ -10,7 +10,7 @@ import XCTest
 
 final class FavoritePostPersistentTests: XCTestCase {
 
-    private let sut = FavoritePostPersistent()
+    private let sut = FavoritePostPersistent.shared
     override func tearDown() {
         do {
             try sut.cleanup()

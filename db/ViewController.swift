@@ -29,8 +29,14 @@ class ViewController: UIViewController {
         table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
         table.register(PostCell.self, forCellReuseIdentifier: PostCell.identifier)
         table.dataSource = dataSource
+        table.delegate = dataSource
+
+        dataSource.onFavoriteTap = { [unowned self] selectedItem in
+            self.viewModel.toggleFavorite(item: selectedItem)
+        }
     }
 
     private func bindView() {

@@ -9,17 +9,16 @@ import Foundation
 
 extension ShowPostsViewModel {
     static func make() -> ShowPostsViewModel {
-        let requester = PostRequester()
+        let getPostItem = GetPostItem.make()
         let userStorage = UserIdStorage.shared
+        let favoritePostPersistent = FavoritePostPersistent.shared
         return .init(
-            getPosts: { userId in try await requester.request(userId: userId).map { $0.toPostItem() }
+            getPosts: { userId in
+                try await getPostItem.getPosts()
             },
-            getUserId: { userStorage.get() })
-    }
-}
-
-extension PostItemResponse {
-    func toPostItem() -> PostItem {
-        .init(id: id, title: title, body: body)
+            getUserId: { userStorage.get() },
+            toggleFavorite: { item in
+                try favoritePostPersistent.togglePostItem(item: item)
+            })
     }
 }

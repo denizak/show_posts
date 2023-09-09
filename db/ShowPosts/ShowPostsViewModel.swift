@@ -26,19 +26,41 @@ final class ShowPostsViewModel {
         showLoginViewSubject.eraseToAnyPublisher()
     }
 
+    private var task: Task<Void, Error>?
+
     private let getPosts: (UserId) async throws -> [PostItem]
     private let getUserId: () -> Int?
-    init(getPosts: @escaping (UserId) async throws -> [PostItem], getUserId: @escaping () -> Int?) {
+    private let toggleFavoriteItem: (PostItem) throws -> Void
+    init(getPosts: @escaping (UserId) async throws -> [PostItem],
+         getUserId: @escaping () -> Int?,
+         toggleFavorite: @escaping (PostItem) throws -> Void
+    ) {
         self.getPosts = getPosts
         self.getUserId = getUserId
+        self.toggleFavoriteItem = toggleFavorite
     }
 
     func viewAppear() {
-        Task {
+        load()
+    }
+
+    func toggleFavorite(item: PostItem) {
+        do {
+            try toggleFavoriteItem(item)
+        } catch {
+            print("unable to toggle favorite item")
+        }
+        load()
+    }
+
+    private func load() {
+        task?.cancel()
+        task = Task {
             guard let userId = getUserId() else {
                 showLoginViewSubject.send(())
                 return
             }
+            if Task.isCancelled { return }
             do {
                 let postItems = try await getPosts(userId)
                 itemsSubject.send(postItems)
