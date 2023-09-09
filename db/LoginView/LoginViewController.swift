@@ -29,12 +29,14 @@ final class LoginViewController: UIViewController {
         button.setTitle("LOGIN", for: .normal)
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         button.backgroundColor = .systemBlue
+        button.accessibilityIdentifier = "login"
         return button
     }()
 
     private let userIdText: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.keyboardType = .numberPad
+        textField.accessibilityIdentifier = "userIdText"
         return textField
     }()
 

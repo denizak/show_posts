@@ -18,6 +18,7 @@ final class ViewController: UIViewController {
     private let unitSelector: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["All", "Favorite"])
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.accessibilityIdentifier = "filter"
         return segmentedControl
     }()
 
