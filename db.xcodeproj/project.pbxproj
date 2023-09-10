@@ -29,6 +29,9 @@
 		607C96162AABDFF9006AFFD4 /* UserIdStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */; };
 		607C96192AABEBB1006AFFD4 /* FavoritePostPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */; };
 		60C4A64A2AAE1A9700D9396C /* XCTest+MemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A6492AAE1A9700D9396C /* XCTest+MemoryLeak.swift */; };
+		60C4A64D2AAE1E4500D9396C /* CommentRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */; };
+		60C4A64F2AAE1E8A00D9396C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A64E2AAE1E8A00D9396C /* API.swift */; };
+		60C4A6512AAE23DE00D9396C /* CommentRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A6502AAE23DE00D9396C /* CommentRequesterTests.swift */; };
 		60E13A642AAC701F004A96CA /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A632AAC701F004A96CA /* PostItem.swift */; };
 		60E13A662AAC707A004A96CA /* FavoritePostPersistentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */; };
 		60E13A682AAC792A004A96CA /* GetPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A672AAC792A004A96CA /* GetPostItem.swift */; };
@@ -90,6 +93,9 @@
 		607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdStorageTests.swift; sourceTree = "<group>"; };
 		607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistent.swift; sourceTree = "<group>"; };
 		60C4A6492AAE1A9700D9396C /* XCTest+MemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeak.swift"; sourceTree = "<group>"; };
+		60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRequester.swift; sourceTree = "<group>"; };
+		60C4A64E2AAE1E8A00D9396C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		60C4A6502AAE23DE00D9396C /* CommentRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRequesterTests.swift; sourceTree = "<group>"; };
 		60E13A632AAC701F004A96CA /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistentTests.swift; sourceTree = "<group>"; };
 		60E13A672AAC792A004A96CA /* GetPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostItem.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 		607C95BA2AABBA90006AFFD4 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				60C4A64B2AAE1E2C00D9396C /* ShowComments */,
 				607C96172AABE0D9006AFFD4 /* LoginView */,
 				607C95EE2AABBAF0006AFFD4 /* ShowPosts */,
 				607C95BB2AABBA90006AFFD4 /* AppDelegate.swift */,
@@ -166,6 +173,7 @@
 				607C95C92AABBA91006AFFD4 /* LaunchScreen.storyboard */,
 				607C95CC2AABBA91006AFFD4 /* Info.plist */,
 				607C95C42AABBA90006AFFD4 /* db.xcdatamodeld */,
+				60C4A64E2AAE1E8A00D9396C /* API.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -212,6 +220,7 @@
 			children = (
 				607C95FE2AABBC4A006AFFD4 /* PostRequesterTests.swift */,
 				60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */,
+				60C4A6502AAE23DE00D9396C /* CommentRequesterTests.swift */,
 			);
 			path = dbIntegrationTests;
 			sourceTree = "<group>";
@@ -224,6 +233,14 @@
 				607C96112AABDC28006AFFD4 /* LoginViewModel.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		60C4A64B2AAE1E2C00D9396C /* ShowComments */ = {
+			isa = PBXGroup;
+			children = (
+				60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */,
+			);
+			path = ShowComments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,9 +416,11 @@
 				607C96062AABD13F006AFFD4 /* ShowPostsViewModel+Init.swift in Sources */,
 				607C96122AABDC28006AFFD4 /* LoginViewModel.swift in Sources */,
 				607C96082AABD6B0006AFFD4 /* PostCell.swift in Sources */,
+				60C4A64D2AAE1E4500D9396C /* CommentRequester.swift in Sources */,
 				607C96192AABEBB1006AFFD4 /* FavoritePostPersistent.swift in Sources */,
 				607C960E2AABD981006AFFD4 /* LoginViewController.swift in Sources */,
 				607C960A2AABD710006AFFD4 /* PostsTableViewDataSource.swift in Sources */,
+				60C4A64F2AAE1E8A00D9396C /* API.swift in Sources */,
 				60E13A682AAC792A004A96CA /* GetPostItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +452,7 @@
 			files = (
 				60E13A662AAC707A004A96CA /* FavoritePostPersistentTests.swift in Sources */,
 				607C95FF2AABBC4A006AFFD4 /* PostRequesterTests.swift in Sources */,
+				60C4A6512AAE23DE00D9396C /* CommentRequesterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
