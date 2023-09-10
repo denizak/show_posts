@@ -29,6 +29,14 @@ final class dbShowFilterTests: XCTestCase {
         favoriteButton.tap()
 
         XCTAssertGreaterThan(tablesQuery.cells.count, 0)
+
+        tablesQuery.cells.firstMatch.tap()
+        
+        let commentTable = app.tables["comment_table"]
+        if commentTable.waitForExistence(timeout: 2) {
+            let cell = commentTable.cells["comment_cell"]
+            XCTAssertTrue(cell.exists)
+        }
     }
 
 }

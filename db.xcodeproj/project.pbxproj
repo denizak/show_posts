@@ -32,6 +32,7 @@
 		60C4A64D2AAE1E4500D9396C /* CommentRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */; };
 		60C4A64F2AAE1E8A00D9396C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A64E2AAE1E8A00D9396C /* API.swift */; };
 		60C4A6512AAE23DE00D9396C /* CommentRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A6502AAE23DE00D9396C /* CommentRequesterTests.swift */; };
+		60C4A6532AAE257400D9396C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A6522AAE257400D9396C /* CommentViewController.swift */; };
 		60E13A642AAC701F004A96CA /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A632AAC701F004A96CA /* PostItem.swift */; };
 		60E13A662AAC707A004A96CA /* FavoritePostPersistentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */; };
 		60E13A682AAC792A004A96CA /* GetPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A672AAC792A004A96CA /* GetPostItem.swift */; };
@@ -96,6 +97,7 @@
 		60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRequester.swift; sourceTree = "<group>"; };
 		60C4A64E2AAE1E8A00D9396C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		60C4A6502AAE23DE00D9396C /* CommentRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRequesterTests.swift; sourceTree = "<group>"; };
+		60C4A6522AAE257400D9396C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		60E13A632AAC701F004A96CA /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistentTests.swift; sourceTree = "<group>"; };
 		60E13A672AAC792A004A96CA /* GetPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostItem.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */,
+				60C4A6522AAE257400D9396C /* CommentViewController.swift */,
 			);
 			path = ShowComments;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				607C960A2AABD710006AFFD4 /* PostsTableViewDataSource.swift in Sources */,
 				60C4A64F2AAE1E8A00D9396C /* API.swift in Sources */,
 				60E13A682AAC792A004A96CA /* GetPostItem.swift in Sources */,
+				60C4A6532AAE257400D9396C /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +629,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,6 +658,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

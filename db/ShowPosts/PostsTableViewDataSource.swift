@@ -10,6 +10,7 @@ import UIKit
 final class PostsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var items: [PostItem] = []
     var onFavoriteTap: (PostItem) -> Void = { _ in }
+    var onCellTap: (PostItem) -> Void = { _ in }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         items.count
@@ -28,5 +29,6 @@ final class PostsTableViewDataSource: NSObject, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        onCellTap(items[indexPath.row])
     }
 }

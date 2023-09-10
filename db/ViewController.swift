@@ -34,6 +34,9 @@ final class ViewController: UIViewController {
         dataSource.onFavoriteTap = { [unowned self] selectedItem in
             self.viewModel.toggleFavorite(item: selectedItem)
         }
+        dataSource.onCellTap = { [unowned self] selectedItem in
+            self.showCommentView(item: selectedItem)
+        }
     }
 
     private func setUpView() {
@@ -80,6 +83,12 @@ final class ViewController: UIViewController {
             self.viewModel.viewAppear()
         }
         present(loginView, animated: false)
+    }
+    
+    private func showCommentView(item: PostItem) {
+        let view = CommentViewController()
+        view.postId = item.id
+        present(view, animated: true)
     }
 
     @objc
