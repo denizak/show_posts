@@ -44,4 +44,15 @@ final class FavoritePostPersistentTests: XCTestCase {
         let lastFavoriteItem = try XCTUnwrap(afterSingleToggleFavoriteItems.last)
         XCTAssertEqual(lastFavoriteItem.id, 200)
     }
+    
+    func testLeak() {
+        let sut = FavoritePostPersistent()
+        testMemoryLeak(sut)
+    }
+    
+    func testMemoryLeak(_ object: AnyObject) {
+        addTeardownBlock { [weak object] in
+            XCTAssertNil(object)
+        }
+    }
 }

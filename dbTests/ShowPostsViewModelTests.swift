@@ -141,6 +141,16 @@ final class ShowPostsViewModelTests: XCTestCase {
 
         XCTAssertTrue(showLoginViewCalled)
     }
+
+    func testLeak() {
+        let sut = ShowPostsViewModel(
+            getPosts: { _ in [] },
+            getFavoritePosts: { _ in [] },
+            getUserId: { nil },
+            toggleFavorite: { _ in })
+        testMemoryLeak(sut)
+    }
+
 }
 
 enum ViewModelError: Error {

@@ -28,6 +28,7 @@
 		607C96142AABDEFF006AFFD4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */; };
 		607C96162AABDFF9006AFFD4 /* UserIdStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */; };
 		607C96192AABEBB1006AFFD4 /* FavoritePostPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */; };
+		60C4A64A2AAE1A9700D9396C /* XCTest+MemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4A6492AAE1A9700D9396C /* XCTest+MemoryLeak.swift */; };
 		60E13A642AAC701F004A96CA /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A632AAC701F004A96CA /* PostItem.swift */; };
 		60E13A662AAC707A004A96CA /* FavoritePostPersistentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */; };
 		60E13A682AAC792A004A96CA /* GetPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E13A672AAC792A004A96CA /* GetPostItem.swift */; };
@@ -88,6 +89,7 @@
 		607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdStorageTests.swift; sourceTree = "<group>"; };
 		607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistent.swift; sourceTree = "<group>"; };
+		60C4A6492AAE1A9700D9396C /* XCTest+MemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeak.swift"; sourceTree = "<group>"; };
 		60E13A632AAC701F004A96CA /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		60E13A652AAC707A004A96CA /* FavoritePostPersistentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistentTests.swift; sourceTree = "<group>"; };
 		60E13A672AAC792A004A96CA /* GetPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostItem.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */,
 				607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */,
 				60E13A6B2AAC81DE004A96CA /* GetPostItemTests.swift */,
+				60C4A6492AAE1A9700D9396C /* XCTest+MemoryLeak.swift */,
 			);
 			path = dbTests;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				607C960C2AABD73A006AFFD4 /* PostsTableViewDataSourceTests.swift in Sources */,
 				607C96032AABC2B1006AFFD4 /* ShowPostsViewModelTests.swift in Sources */,
 				60E13A6C2AAC81DE004A96CA /* GetPostItemTests.swift in Sources */,
+				60C4A64A2AAE1A9700D9396C /* XCTest+MemoryLeak.swift in Sources */,
 				607C96162AABDFF9006AFFD4 /* UserIdStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

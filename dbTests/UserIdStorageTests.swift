@@ -28,4 +28,8 @@ final class UserIdStorageTests: XCTestCase {
         XCTAssertEqual(actualValue, 200)
     }
 
+    func testLeak() {
+        let sut = UserIdStorage()
+        testMemoryLeak(sut)
+    }
 }

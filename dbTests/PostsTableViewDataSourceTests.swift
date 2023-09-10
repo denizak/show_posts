@@ -30,5 +30,10 @@ final class PostsTableViewDataSourceTests: XCTestCase {
         let postCell = try XCTUnwrap(cell)
         XCTAssertEqual(postCell.titleLabelValue, "any-title")
     }
+    
+    func testLeak() {
+        let sut = PostsTableViewDataSource()
+        testMemoryLeak(sut)
+    }
 
 }
