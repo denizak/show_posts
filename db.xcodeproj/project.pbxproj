@@ -93,6 +93,7 @@
 		607C96132AABDEFF006AFFD4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		607C96152AABDFF9006AFFD4 /* UserIdStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdStorageTests.swift; sourceTree = "<group>"; };
 		607C96182AABEBB1006AFFD4 /* FavoritePostPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostPersistent.swift; sourceTree = "<group>"; };
+		60BD62F12AAF0EB800EDC615 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		60C4A6492AAE1A9700D9396C /* XCTest+MemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeak.swift"; sourceTree = "<group>"; };
 		60C4A64C2AAE1E4500D9396C /* CommentRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRequester.swift; sourceTree = "<group>"; };
 		60C4A64E2AAE1E8A00D9396C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		607C95AF2AABBA90006AFFD4 = {
 			isa = PBXGroup;
 			children = (
+				60BD62F12AAF0EB800EDC615 /* README.md */,
 				607C96042AABCA4C006AFFD4 /* db.xctestplan */,
 				607C95BA2AABBA90006AFFD4 /* db */,
 				607C95D42AABBA91006AFFD4 /* dbTests */,
